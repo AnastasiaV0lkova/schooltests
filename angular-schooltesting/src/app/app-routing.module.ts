@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { TestsComponent } from './tests/tests.component';
+import { UsersComponent } from './users/users.component';
+import { TopNavigationComponent } from './shared/top-navigation/top-navigation.component';
+import { PageCreateUsersComponent } from './page-create-users/page-create-users.component';
+import { ClassesComponent } from './classes/classes.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'tests', component: TestsComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'shared/top', component: TopNavigationComponent },
+  { path: 'create-users', component: PageCreateUsersComponent },
+  { path: 'classes', component: ClassesComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

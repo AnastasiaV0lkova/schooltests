@@ -1,1 +1,63 @@
-<p>tests works!</p>
+<app-top-navigation></app-top-navigation>
+<!--<div class="column1">
+  <button mat-raised-button color="primary" type="submit" id="createStudent">
+    Создать ученика
+  </button>
+  <div class="column2">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      id="createAdministrator"
+    >
+      Создать учителя
+    </button>
+  </div>
+</div>
+<div class="column3">
+  <button mat-raised-button color="primary" type="submit" id="createTeacher">
+    Создать администратора
+  </button>
+</div>-->
+
+<mat-tab-group class="createUsers">
+  <mat-tab label="Создать ученика">
+    <br /><br />
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- FIO Column -->
+      <ng-container matColumnDef="FIO">
+        <th mat-header-cell *matHeaderCellDef>Ф.И.О.</th>
+        <td mat-cell *matCellDef="let element">{{ element.FIO }}</td>
+      </ng-container>
+
+      <!-- classnumber Column -->
+      <ng-container matColumnDef="classnumber">
+        <th mat-header-cell *matHeaderCellDef>Номер</th>
+        <td mat-cell *matCellDef="let element">{{ element.classnumber }}</td>
+      </ng-container>
+
+      <!-- classletter Column -->
+      <ng-container matColumnDef="classletter">
+        <th mat-header-cell *matHeaderCellDef>класса</th>
+        <td mat-cell *matCellDef="let element">{{ element.classletter }}</td>
+      </ng-container>
+
+      <!-- username Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Логин</th>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Создать учителя"> Content 2 </mat-tab>
+  <mat-tab label="Создать администратора"> Content 3 </mat-tab>
+</mat-tab-group>

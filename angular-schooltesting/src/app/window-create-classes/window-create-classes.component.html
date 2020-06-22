@@ -1,0 +1,41 @@
+<mat-dialog-content class="mat-typography">
+    <form
+      [formGroup]="formClasses"
+      action="/regisrstudent"
+      method="post"
+      (ngSubmit)="onSubmitClasses()"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label for="search-box">Цифра класса</mat-label>
+        <mat-select [(ngModel)]="classnumbers">
+          <mat-option *ngFor="let option of classnumbers" [value]="option.id">{{
+            option.classnumber
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label for="search-box">Буква класса</mat-label>
+        <mat-select [(ngModel)]="classletters">
+          <mat-option *ngFor="let option of classletters" [value]="option.id">{{
+            option.classletter
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-dialog-actions align="end">
+        <button
+          mat-button
+          [mat-dialog-close]="true"
+          cdkFocusInitial
+          type="submit"
+          id="submitDetails"
+          name="submitDetails"
+        >
+          Сохранить
+        </button>
+        <button mat-button mat-dialog-close>Отмена</button>
+      </mat-dialog-actions>
+    </form>
+  </mat-dialog-content>
+  

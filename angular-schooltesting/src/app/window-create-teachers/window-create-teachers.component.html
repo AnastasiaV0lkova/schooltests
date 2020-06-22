@@ -1,0 +1,96 @@
+<mat-dialog-content class="mat-typography">
+  <form
+    [formGroup]="formTeachers"
+    action="/regisrstudent"
+    method="post"
+    (ngSubmit)="onSubmitStudents()"
+  >
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Ф.И.О.</mat-label>
+      <input formControlName="FIO" matInput type="text" id="FIO" />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('FIO').invalid && formTeachers.get('FIO').touched
+        "
+        >Поле Ф.И.О. не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
+    <br />
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Предмет</mat-label>
+      <input formControlName="subject" matInput type="text" id="subject" />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('subject').invalid &&
+          formTeachers.get('subject').touched
+        "
+        >Поле предмет не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
+    <br /><br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Логин:</mat-label>
+      <input formControlName="username" matInput type="text" id="username" />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('username').invalid &&
+          formTeachers.get('username').touched
+        "
+        >Поле логин не должно быть пустым
+      </mat-hint>
+    </mat-form-field>
+    <br />
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Пароль:</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        type="password"
+        id="password"
+        placeholder="Пароль"
+        [ngClass]="{
+          invalid:
+            formTeachers.get('password').invalid &&
+            formTeachers.get('password').touched
+        }"
+      />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('password').invalid &&
+          formTeachers.get('password').touched
+        "
+      >
+        <mat-hint *ngIf="formTeachers.get('password').errors['required']"
+          >Пароль не должен быть пустым
+        </mat-hint>
+        <mat-hint
+          *ngIf="
+            formTeachers.get('password').errors['minlength'] &&
+            formTeachers.get('password').errors['minlength']['requiredLength']
+          "
+        >
+          Поле пароль должно быть меньше 3 символов.
+        </mat-hint>
+      </mat-hint>
+    </mat-form-field>
+    <br />
+
+    <mat-dialog-actions align="end">
+      <button
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        type="submit"
+        id="submitDetails"
+        name="submitDetails"
+        [disabled]="formTeachers.invalid"
+      >
+        Сохранить
+      </button>
+      <button mat-button mat-dialog-close>Отмена</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

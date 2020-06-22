@@ -1,0 +1,25 @@
+/*
+.column1 {
+
+  margin-top: 80px;
+  margin-left: 80px;
+  float: left;
+}
+.column2 {
+
+  margin-top: -35px;
+  margin-left: 180px;
+  float: center;
+}
+.column3 {
+
+  margin-top: 80px;
+  margin-right: 450px;
+  float: right;
+}*/
+.createUsers{
+padding: 60px;
+}
+table {
+  width: 80%;
+}

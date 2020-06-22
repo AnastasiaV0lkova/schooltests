@@ -1,0 +1,105 @@
+<mat-dialog-content class="mat-typography">
+  <form
+    [formGroup]="formStudents"
+    action="/regisrstudent"
+    method="post"
+    (ngSubmit)="onSubmitStudents()"
+  >
+    <mat-form-field class="example-full-width" >
+      <mat-label for="search-box" >Ф.И.О.</mat-label>
+      <input formControlName="FIO" matInput type="text" id="FIO"/>
+      <mat-hint
+        *ngIf="
+          formStudents.get('FIO').invalid && formStudents.get('FIO').touched
+        "
+        >Поле Ф.И.О. не должно быть пустым</mat-hint>
+    </mat-form-field>
+    <br />
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label for="search-box">Цифра класса</mat-label>
+      <mat-select [(ngModel)]="classnumbers">
+        <mat-option *ngFor="let option of classnumbers" [value]="option.id">{{
+          option.classnumber
+        }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="fill">
+      <mat-label for="search-box">Буква класса</mat-label>
+      <mat-select [(ngModel)]="classletters">
+        <mat-option *ngFor="let option of classletters" [value]="option.id">{{
+          option.classletter
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Логин:</mat-label>
+      <input formControlName="username" matInput type="text" id="username" />
+      <mat-hint
+        *ngIf="
+          formStudents.get('username').invalid &&
+          formStudents.get('username').touched
+        "
+        >Поле логин не должно быть пустым
+      </mat-hint>
+    </mat-form-field>
+    <br />  <br />
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Пароль:</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        type="password"
+        id="password"
+        [ngClass]="{
+          invalid:
+            formStudents.get('password').invalid &&
+            formStudents.get('password').touched
+        }"
+      />
+      <mat-hint
+        *ngIf="
+          formStudents.get('password').invalid &&
+          formStudents.get('password').touched
+        "
+      >
+        <mat-hint *ngIf="formStudents.get('password').errors['required']"
+          >Поле пароль не должно быть пустым
+        </mat-hint>
+        <mat-hint
+          *ngIf="
+            formStudents.get('password').errors['minlength'] &&
+            formStudents.get('password').errors['minlength']['requiredLength']
+          "
+        >
+          Поле пароль должно быть меньше 3 символов.
+        </mat-hint>
+      </mat-hint>
+    </mat-form-field>
+    
+    <br />
+   <!-- <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      id="submitDetails"
+      name="submitDetails"
+      [disabled]="formStudents.invalid"
+    >
+      Войти
+    </button> -->
+    <mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit"
+      id="submitDetails"
+      name="submitDetails"
+      [disabled]="formStudents.invalid">
+        Сохранить
+      </button>
+      <button mat-button mat-dialog-close>Отмена</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
+
