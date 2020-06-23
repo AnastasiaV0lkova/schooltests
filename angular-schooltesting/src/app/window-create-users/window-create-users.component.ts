@@ -10,14 +10,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class WindowCreateUsersComponent implements OnInit {
   formStudents: FormGroup;
   dialogRef: any;
-  
-  constructor() {}
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
   studentControl = new FormControl('', Validators.required);
   ngOnInit() {
-   
     this.formStudents = new FormGroup({
       FIO: new FormControl(null, [Validators.required]),
-    /*  classnumber: new FormControl(null, [Validators.required]),
+      /*  classnumber: new FormControl(null, [Validators.required]),
       classletter: new FormControl(null, [Validators.required]), */
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
@@ -25,6 +24,8 @@ export class WindowCreateUsersComponent implements OnInit {
         Validators.minLength(4),
       ]),
     });
+    console.log(this.data);
+    this.formStudents.get('username').setValue(this.data.username);
   }
   public classnumbers = [
     { id: 1, classnumber: 1 },
@@ -54,13 +55,12 @@ export class WindowCreateUsersComponent implements OnInit {
   public classLettersSelected = this.classletters[1].id;
 
   onSubmitStudents() {}
-  
-onConfirm() {
-this.dialogRef.close(true);
-}
 
-onCancel(): void {
-this.dialogRef.close(false);
-}
+  onConfirm() {
+    this.dialogRef.close(true);
+  }
 
+  onCancel(): void {
+    this.dialogRef.close(false);
+  }
 }

@@ -5,36 +5,37 @@
     method="post"
     (ngSubmit)="onSubmitStudents()"
   >
-    <mat-form-field class="example-full-width" >
-      <mat-label for="search-box" >Ф.И.О.</mat-label>
-      <input formControlName="FIO" matInput type="text" id="FIO"/>
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Ф.И.О.</mat-label>
+      <input formControlName="FIO" matInput type="text" id="FIO" />
       <mat-hint
         *ngIf="
           formStudents.get('FIO').invalid && formStudents.get('FIO').touched
         "
-        >Поле Ф.И.О. не должно быть пустым</mat-hint>
+        >Поле Ф.И.О. не должно быть пустым</mat-hint
+      >
     </mat-form-field>
     <br />
     <br />
     <mat-form-field appearance="fill">
       <mat-label for="search-box">Цифра класса</mat-label>
-      <mat-select [(ngModel)]="classnumbers">
-        <mat-option *ngFor="let option of classnumbers" [value]="option.id">{{
-          option.classnumber
-        }} </mat-option>
+      <mat-select >
+        <mat-option *ngFor="let option of classnumbers" [value]="option.id"
+          >{{ option.classnumber }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     &nbsp;
     <mat-form-field appearance="fill">
       <mat-label for="search-box">Буква класса</mat-label>
-      <mat-select [(ngModel)]="classletters">
+      <mat-select >
         <mat-option *ngFor="let option of classletters" [value]="option.id">{{
           option.classletter
         }}</mat-option>
       </mat-select>
     </mat-form-field>
     <br />
-    
+
     <mat-form-field class="example-full-width">
       <mat-label for="search-box">Логин:</mat-label>
       <input formControlName="username" matInput type="text" id="username" />
@@ -46,7 +47,8 @@
         >Поле логин не должно быть пустым
       </mat-hint>
     </mat-form-field>
-    <br />  <br />
+    <br />
+    <br />
     <mat-form-field class="example-full-width">
       <mat-label for="search-box">Пароль:</mat-label>
       <input
@@ -79,9 +81,9 @@
         </mat-hint>
       </mat-hint>
     </mat-form-field>
-    
+
     <br />
-   <!-- <button
+    <!-- <button
       mat-raised-button
       color="primary"
       type="submit"
@@ -92,14 +94,18 @@
       Войти
     </button> -->
     <mat-dialog-actions align="end">
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit"
-      id="submitDetails"
-      name="submitDetails"
-      [disabled]="formStudents.invalid">
+      <button
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        type="submit"
+        id="submitDetails"
+        name="submitDetails"
+        [disabled]="formStudents.invalid"
+      >
         Сохранить
       </button>
       <button mat-button mat-dialog-close>Отмена</button>
     </mat-dialog-actions>
   </form>
 </mat-dialog-content>
-

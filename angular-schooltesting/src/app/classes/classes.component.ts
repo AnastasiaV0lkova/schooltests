@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { WindowCreateSubjectsComponent } from '../window-create-subjects/window-create-subjects.component';
 import { WindowCreateClassesComponent } from '../window-create-classes/window-create-classes.component';
+import { SelectControlValueAccessor } from '@angular/forms';
 
 export interface Class {
   position: number;
-  classnumber: number;
-  classletter: string;
+  class: string;
+  /* classletter: string;*/
 }
 
 export interface Subject {
@@ -15,9 +16,9 @@ export interface Subject {
 }
 
 const Classes: Class[] = [
-  { position: 1, classnumber: 10, classletter: 'А' },
-  { position: 2, classnumber: 7, classletter: 'Б' },
-  { position: 3, classnumber: 6, classletter: 'Г' },
+  { position: 1, class: '10 А' /*classletter: 'А'*/ },
+  { position: 2, class: '7 Б' /*classletter: 'Б'*/ },
+  { position: 3, class: '6 Г' /*classletter: 'Г'*/ },
 ];
 
 const Subjects: Subject[] = [
@@ -34,7 +35,11 @@ const Subjects: Subject[] = [
 export class ClassesComponent implements OnInit {
   [x: string]: any;
 
-  displayedColumns_1: string[] = ['position', 'classnumber', 'classletter', 'options'];
+  displayedColumns_1: string[] = [
+    'position',
+    'class',
+    /*'classletter',*/ 'options',
+  ];
   dataSource_1 = Classes;
 
   displayedColumns_2: string[] = ['position', 'subject', 'options'];
@@ -47,7 +52,7 @@ export class ClassesComponent implements OnInit {
   openDialogClasses() {
     const dialogRef = this.dialog.open(WindowCreateClassesComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
@@ -55,9 +60,8 @@ export class ClassesComponent implements OnInit {
   openDialogSubjects() {
     const dialogRef = this.dialog.open(WindowCreateSubjectsComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
 }

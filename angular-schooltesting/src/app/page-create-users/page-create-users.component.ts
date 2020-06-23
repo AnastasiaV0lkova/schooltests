@@ -10,8 +10,8 @@ import { WindowCreateAdministratorsComponent } from '../window-create-administra
 
 export interface Student {
   FIO: string;
-  classnumber: number;
-  classletter: string;
+  class: string;
+  /* classletter: string;*/
   username: string;
   position: number;
 }
@@ -32,36 +32,36 @@ const Students: Student[] = [
   {
     position: 1,
     FIO: 'Петров Александр Сергеевич',
-    classnumber: 10,
-    classletter: 'А',
+    class: '9 А',
+    /*  classletter: 'А',*/
     username: 'PetrovAS',
   },
   {
     position: 2,
     FIO: 'Иванова Виктория Викторовна',
-    classnumber: 7,
-    classletter: 'Б',
+    class: '10 Б',
+    /*classletter: 'Б',*/
     username: 'IvanovaVV',
   },
   {
     position: 3,
     FIO: 'Сатырёв Игорь Сергеевич',
-    classnumber: 7,
-    classletter: 'Б',
+    class: '8 Б',
+    /*classletter: 'Б',*/
     username: 'SaturevIS',
   },
   {
     position: 4,
     FIO: 'Гриб Валерия Андреевна',
-    classnumber: 6,
-    classletter: 'Г',
+    class: '5 Г',
+    /*classletter: 'Г',*/
     username: 'GribVA',
   },
   {
     position: 5,
     FIO: 'Усач Анатолий Викторович',
-    classnumber: 9,
-    classletter: 'А',
+    class: '7 А',
+    /*classletter: 'А',*/
     username: 'UsachAV',
   },
 ];
@@ -115,26 +115,43 @@ export class PageCreateUsersComponent implements OnInit {
   displayedColumns: string[] = [
     'position',
     'FIO',
-    'classnumber',
-    'classletter',
+    'class',
+    /* 'classletter',*/
     'username',
-    'options'
+    'options',
   ];
   dataSource = Students;
 
-  displayedColumns_2: string[] = ['position', 'FIO', 'subject', 'username', 'options'];
+  displayedColumns_2: string[] = [
+    'position',
+    'FIO',
+    'subject',
+    'username',
+    'options',
+  ];
   dataSource_2 = Teachers;
 
   displayedColumns_3: string[] = ['position', 'FIO', 'username', 'options'];
   dataSource_3 = Administrators;
 
+  Class() {
+    this.Classes.setValue({
+      position: 1,
+      FIO: 'ytyuig',
+      username: 'sdfg',
+    });
+  }
+
   constructor(public dialog: MatDialog) {}
 
   openDialogStudents() {
-    const dialogRef = this.dialog.open(WindowCreateUsersComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
+   /* const dialogRef = this.dialog.open(WindowCreateUsersComponent);*/
+    /*   this.dialog.open(WindowCreateUsersComponent);*/
+  /*  dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+    });*/
+    let dialogRef1 = this.dialog.open(WindowCreateUsersComponent, {
+      data: { username: 'austin' },
     });
   }
 

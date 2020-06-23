@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-window-create-teachers',
@@ -9,13 +10,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class WindowCreateTeachersComponent implements OnInit {
 
   formTeachers: FormGroup;
+  getSubjects = new FormControl();
+  toppingList: string[] = [];
 
+
+  
   constructor() {}
 
   ngOnInit() {
     this.formTeachers = new FormGroup({
       FIO: new FormControl(null, [Validators.required]),
-      subject: new FormControl(null, [Validators.required]),
+     /*subject: new FormControl(null, [Validators.required]),*/
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
         Validators.required,
