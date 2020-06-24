@@ -1,6 +1,27 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormGroupDirective,
+  NgForm,
+} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+}
 
 @Component({
   selector: 'app-window-create-users',
@@ -10,6 +31,34 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class WindowCreateUsersComponent implements OnInit {
   formStudents: FormGroup;
   dialogRef: any;
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
+
+  /*isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+
+
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();*/
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
   studentControl = new FormControl('', Validators.required);
@@ -24,8 +73,12 @@ export class WindowCreateUsersComponent implements OnInit {
         Validators.minLength(4),
       ]),
     });
-    console.log(this.data);
-    this.formStudents.get('username').setValue(this.data.username);
+    if (this.data.item) {
+      this.formStudents.get('FIO').setValue(this.data.item.FIO);
+      /*   this.formStudents.get('class').setValue(this.data.item.class);*/
+      this.formStudents.get('username').disable(this.data.item.username);
+      this.formStudents.get('password').disable(this.data.item.password);
+    }
   }
   public classnumbers = [
     { id: 1, classnumber: 1 },

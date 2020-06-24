@@ -15,12 +15,36 @@
         >Поле Ф.И.О. не должно быть пустым</mat-hint
       >
     </mat-form-field>
+
+    <br />
+    <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Введите правильную форму email
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Поле email не заполнено
+      </mat-error>
+    </mat-form-field>
     <br />
     <br />
     <mat-form-field appearance="fill">
       <mat-label for="search-box">Цифра класса</mat-label>
-      <mat-select >
-        <mat-option *ngFor="let option of classnumbers" [value]="option.id"
+      <mat-select>
+        <mat-option *ngFor="let option of classnumbers"
           >{{ option.classnumber }}
         </mat-option>
       </mat-select>
@@ -28,7 +52,7 @@
     &nbsp;
     <mat-form-field appearance="fill">
       <mat-label for="search-box">Буква класса</mat-label>
-      <mat-select >
+      <mat-select>
         <mat-option *ngFor="let option of classletters" [value]="option.id">{{
           option.classletter
         }}</mat-option>

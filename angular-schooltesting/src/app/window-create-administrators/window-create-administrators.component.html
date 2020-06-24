@@ -17,6 +17,28 @@
       </mat-form-field>
       <br />
       <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="pat@example.com"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+        Введите правильную форму email
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Поле email не заполнено
+        </mat-error>
+      </mat-form-field>
+    <br/>
+    <br/>
   
       <mat-form-field class="example-full-width">
         <mat-label for="search-box">Логин:</mat-label>

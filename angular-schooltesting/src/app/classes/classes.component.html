@@ -30,7 +30,13 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="primary" (click)="changeClass(element)">
+            <span class="material-icons">
+              create
+            </span>
+          </button>
+          &nbsp;
+          <button mat-icon-button color="warn" (click)="removeClasses(element)">
             <span class="material-icons">
               delete
             </span>
@@ -67,7 +73,17 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="primary" (click)="changeSubject(element)">
+            <span class="material-icons">
+              create
+            </span>
+          </button>
+          &nbsp;
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeSubjects(element)"
+          >
             <span class="material-icons">
               delete
             </span>

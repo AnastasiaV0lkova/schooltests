@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-window-create-classes',
@@ -10,13 +11,12 @@ export class WindowCreateClassesComponent implements OnInit {
 
   formClasses: FormGroup;
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
-   /* this.formClasses = new FormGroup({
-      classnumber: new FormControl(null, [Validators.required]),
-      classletter: new FormControl(null, [Validators.required]),
-    }); */
+    if (this.data.item) {
+      this.formClasses.get('class').setValue(this.data.item.class);
+    }
   }
   public classnumbers = [
     { id: 1, classnumber: 1 },

@@ -20,6 +20,11 @@
         <td mat-cell *matCellDef="let element">{{ element.FIO }}</td>
       </ng-container>
 
+       <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container> 
+
       <!-- classnumber Column -->
       <ng-container matColumnDef="class">
         <th mat-header-cell *matHeaderCellDef>Класс</th>
@@ -43,13 +48,21 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="changeStudent()">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="changeStudent(element)"
+          >
             <span class="material-icons">
               create
             </span>
           </button>
           &nbsp;
-          <button mat-icon-button color="warn">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeStudents(element)"
+          >
             <span class="material-icons">
               delete
             </span>
@@ -81,6 +94,11 @@
         <td mat-cell *matCellDef="let element">{{ element.FIO }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container> 
+
       <!-- subject Column -->
       <ng-container matColumnDef="subject">
         <th mat-header-cell *matHeaderCellDef>Предмет</th>
@@ -98,13 +116,21 @@
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="changeTeacher()">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="changeTeacher(element)"
+          >
             <span class="material-icons">
               create
             </span>
           </button>
           &nbsp;
-          <button mat-icon-button color="warn">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeTeachers(element)"
+          >
             <span class="material-icons">
               delete
             </span>
@@ -139,6 +165,11 @@
         <td mat-cell *matCellDef="let element">{{ element.FIO }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container> 
+
       <!-- username Column -->
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef>Имя пользователя</th>
@@ -153,14 +184,18 @@
           <button
             mat-icon-button
             color="primary"
-            (click)="changeAdministrator()"
+            (click)="changeAdministrator(element)"
           >
             <span class="material-icons">
               create
             </span>
           </button>
           &nbsp;
-          <button mat-icon-button color="warn">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="removeAdministrators(element)"
+          >
             <span class="material-icons">
               delete
             </span>

@@ -17,20 +17,32 @@
     </mat-form-field>
     <br />
     <br />
-  <!--  <mat-form-field class="example-full-width">
-      <mat-label for="search-box">Предмет</mat-label>
-      <input formControlName="subject" matInput type="text" id="subject" />
-      <mat-hint
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [formControl]="emailFormControl"
+        [errorStateMatcher]="matcher"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error
         *ngIf="
-          formTeachers.get('subject').invalid &&
-          formTeachers.get('subject').touched
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
         "
-        >Поле предмет не должно быть пустым</mat-hint
       >
-    </mat-form-field> -->
+      Введите правильную форму email
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Поле email не заполнено 
+      </mat-error>
+    </mat-form-field>
+    <br/>
+    <br/>
     <mat-form-field>
       <mat-label>Предмет</mat-label>
-      <mat-select [formControl]="getSubjects" multiple > 
+      <!--[formControl]="getSubjects" -->
+      <mat-select multiple > 
         <mat-option *ngFor="let topping of getSubjects" [value]="getSubjects">{{getSubjects}}</mat-option>
       </mat-select>
     </mat-form-field>
