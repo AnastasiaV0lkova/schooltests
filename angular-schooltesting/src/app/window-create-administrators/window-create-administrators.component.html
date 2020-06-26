@@ -6,17 +6,39 @@
       (ngSubmit)="onSubmitAdministrators()"
     >
       <mat-form-field class="example-full-width">
-        <mat-label for="search-box">Ф.И.О.</mat-label>
-        <input formControlName="FIO" matInput type="text" id="FIO" />
+        <mat-label for="search-box">Фамилия</mat-label>
+        <input formControlName="surname" matInput type="text" id="surname" />
         <mat-hint
           *ngIf="
-          formAdministrators.get('FIO').invalid && formAdministrators.get('FIO').touched
+          formAdministrators.get('surname').invalid && formAdministrators.get('surname').touched
           "
-          >Поле Ф.И.О. не должно быть пустым</mat-hint
+          >Поле фамилия не должно быть пустым</mat-hint
+        >
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="example-full-width">
+        <mat-label for="search-box">Имя</mat-label>
+        <input formControlName="name" matInput type="text" id="name" />
+        <mat-hint
+          *ngIf="
+          formAdministrators.get('name').invalid && formAdministrators.get('name').touched
+          "
+          >Поле имя не должно быть пустым</mat-hint
         >
       </mat-form-field>
       <br />
       <br />
+      <mat-form-field class="example-full-width">
+        <mat-label for="search-box">Отчество</mat-label>
+        <input formControlName="patronymic" matInput type="text" id="patronymic" />
+        <mat-hint
+          *ngIf="
+          formAdministrators.get('patronymic').invalid && formAdministrators.get('patronymic').touched
+          "
+          >Поле отчество не должно быть пустым</mat-hint
+        >
+      </mat-form-field>
+      &nbsp;
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input

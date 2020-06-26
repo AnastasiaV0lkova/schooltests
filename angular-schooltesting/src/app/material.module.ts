@@ -8,8 +8,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { WindowDeleteRecordComponent } from './window-delete-record/window-delete-record.component';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -24,6 +25,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +40,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
   ],
-  declarations: [],
+  declarations: [WindowDeleteRecordComponent],
 })
 export class MaterialModule {}

@@ -41,7 +41,9 @@ export class WindowCreateAdministratorsComponent implements OnInit {
   administratorControl = new FormControl('', Validators.required);
   ngOnInit() {
     this.formAdministrators = new FormGroup({
-      FIO: new FormControl(null, [Validators.required]),
+      surname: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
+      patronymic: new FormControl(null, [Validators.required]),
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
         Validators.required,
@@ -50,14 +52,16 @@ export class WindowCreateAdministratorsComponent implements OnInit {
     });
 
     if (this.data.item) {
-      this.formAdministrators.get('FIO').setValue(this.data.item.FIO);
+      this.formAdministrators.get('surname').setValue(this.data.item.surname);
+      this.formAdministrators.get('name').setValue(this.data.item.name);
+      this.formAdministrators.get('patronymic').setValue(this.data.item.patronymic);
       this.formAdministrators.get('username').disable(this.data.item.username);
       this.formAdministrators.get('password').disable(this.data.item.username);
     }
   }
-  if(index: any) {
+ /* if(index: any) {
     this.data.splice(this.data.indexOf('fio'), 1);
-  }
+  }*/
 
   onSubmitAdministrators() {}
 }

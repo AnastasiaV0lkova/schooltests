@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   FormGroup,
   FormControl,
@@ -39,32 +39,14 @@ export class WindowCreateUsersComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  /*isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
-
-
-
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  matcher = new MyErrorStateMatcher();*/
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
   studentControl = new FormControl('', Validators.required);
   ngOnInit() {
     this.formStudents = new FormGroup({
-      FIO: new FormControl(null, [Validators.required]),
+      surname: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
+      patronymic: new FormControl(null, [Validators.required]),
       /*  classnumber: new FormControl(null, [Validators.required]),
       classletter: new FormControl(null, [Validators.required]), */
       username: new FormControl(null, [Validators.required]),
@@ -74,27 +56,30 @@ export class WindowCreateUsersComponent implements OnInit {
       ]),
     });
     if (this.data.item) {
-      this.formStudents.get('FIO').setValue(this.data.item.FIO);
+      
+      this.formStudents.get('surname').setValue(this.data.item.surname);
+      this.formStudents.get('name').setValue(this.data.item.name);
+      this.formStudents.get('patronymic').setValue(this.data.item.patronymic);
       /*   this.formStudents.get('class').setValue(this.data.item.class);*/
       this.formStudents.get('username').disable(this.data.item.username);
       this.formStudents.get('password').disable(this.data.item.password);
     }
   }
-  public classnumbers = [
-    { id: 1, classnumber: 1 },
-    { id: 2, classnumber: 2 },
-    { id: 3, classnumber: 3 },
-    { id: 4, classnumber: 4 },
-    { id: 5, classnumber: 5 },
-    { id: 6, classnumber: 6 },
-    { id: 7, classnumber: 7 },
-    { id: 8, classnumber: 8 },
-    { id: 9, classnumber: 9 },
-    { id: 10, classnumber: 10 },
-    { id: 11, classnumber: 11 },
+  public class = [
+    { id: 1, class: 1 },
+    { id: 2, class: 2 },
+    { id: 3, class: 3 },
+    { id: 4, class: 4 },
+    { id: 5, class: 5 },
+    { id: 6, class: 6 },
+    { id: 7, class: 7 },
+    { id: 8, class: 8 },
+    { id: 9, class: 9 },
+    { id: 10, class: 10 },
+    { id: 11, class: 11 },
   ];
-  public classNumbersSelected = this.classnumbers[1].id;
-
+  public classSelected = this.class[1].id;
+/*
   public classletters = [
     { id: 1, classletter: 'А' },
     { id: 2, classletter: 'Б' },
@@ -106,7 +91,7 @@ export class WindowCreateUsersComponent implements OnInit {
     { id: 8, classletter: 'З' },
   ];
   public classLettersSelected = this.classletters[1].id;
-
+*/
   onSubmitStudents() {}
 
   onConfirm() {

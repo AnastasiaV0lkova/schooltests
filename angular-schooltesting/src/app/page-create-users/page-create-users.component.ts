@@ -10,7 +10,9 @@ import { WindowCreateAdministratorsComponent } from '../window-create-administra
 import { MatTableDataSource } from '@angular/material/table';
 
 export interface Student {
-  FIO: string;
+  surname: string;
+  name: string;
+  patronymic: string;
   class: string;
   email: string;
   /* classletter: string;*/
@@ -19,23 +21,29 @@ export interface Student {
 }
 
 export interface Teacher {
-  FIO: string;
+  position: number;
+  surname: string;
+  name: string;
+  patronymic: string;
   email: string;
   subject: string;
   username: string;
-  position: number;
 }
 
 export interface Administrator {
-  FIO: string;
+  position: number;
+  surname: string;
+  name: string;
+  patronymic: string;
   email: string;
   username: string;
-  position: number;
 }
 const Students: Student[] = [
   {
     position: 1,
-    FIO: 'Петров Александр Сергеевич',
+    surname: 'Усач',
+    name: 'Евгений',
+    patronymic: 'Петрович',
     email: 'petr@mail.ru',
     class: '9 А',
     /*  classletter: 'А',*/
@@ -43,15 +51,19 @@ const Students: Student[] = [
   },
   {
     position: 2,
-    FIO: 'Иванова Виктория Викторовна',
-    email: 'ivan@mail.ru', 
+    surname: 'Иванова',
+    name: 'Виктория',
+    patronymic: 'Викторовна',
+    email: 'ivan@mail.ru',
     class: '10 Б',
     /*classletter: 'Б',*/
     username: 'IvanovaVV',
   },
   {
     position: 3,
-    FIO: 'Сатырёв Игорь Сергеевич',
+    surname: 'Сатырёв',
+    name: 'Игорь',
+    patronymic: 'Сергеевич',
     email: 'sdsad@mail.ru',
     class: '8 Б',
     /*classletter: 'Б',*/
@@ -59,7 +71,9 @@ const Students: Student[] = [
   },
   {
     position: 4,
-    FIO: 'Гриб Валерия Андреевна',
+    surname: 'Гриб',
+    name: 'Валерия',
+    patronymic: 'Андреевна',
     email: 'valerrya@mail.ru',
     class: '5 Г',
     /*classletter: 'Г',*/
@@ -67,7 +81,9 @@ const Students: Student[] = [
   },
   {
     position: 5,
-    FIO: 'Усач Анатолий Викторович',
+    surname: 'Усач',
+    name: 'Анатолий',
+    patronymic: 'Викторович',
     email: 'tolya@mail.ru',
     class: '7 А',
     /*classletter: 'А',*/
@@ -78,35 +94,45 @@ const Students: Student[] = [
 const Teachers: Teacher[] = [
   {
     position: 1,
-    FIO: 'Маслюк Виктор Михайлович',
+    surname: 'Маслюк',
+    name: 'Виктор',
+    patronymic: 'Михайлович',
     email: 'sdsad@mail.ru',
     subject: 'русский язык',
     username: 'MaslukVM',
   },
   {
     position: 2,
-    FIO: 'Сидоров Максим Анатольевич',
+    surname: 'Сидоров',
+    name: 'Максим',
+    patronymic: 'Анатольевич',
     email: 'sdsadad@mail.ru',
     subject: 'математика',
     username: 'SidorovMA',
   },
   {
     position: 3,
-    FIO: 'Петрова Дарья Андреевна',
+    surname: 'Петрова',
+    name: 'Дарья',
+    patronymic: 'Андреевна',
     email: 'ssrad@mail.ru',
     subject: 'физика',
     username: 'PetrovaDA',
   },
   {
     position: 4,
-    FIO: 'Головач Анна петровна',
+    surname: 'Головач',
+    name: 'Анна',
+    patronymic: 'Анатольевич',
     email: 'sdsaasad@mail.ru',
     subject: 'английский язык',
     username: 'GolovachAN',
   },
   {
     position: 5,
-    FIO: 'Быков Алексей Петрович',
+    surname: 'Быков',
+    name: 'Алексей',
+    patronymic: 'Петрович',
     email: 'swerad@mail.ru',
     subject: 'биология',
     username: 'BukovAP',
@@ -114,9 +140,30 @@ const Teachers: Teacher[] = [
 ];
 
 const Administrators: Administrator[] = [
-  { position: 1, FIO: 'Машкаров Петр Семёныч', username: 'MashkarovPS', email: 'srwerad@mail.ru' },
-  { position: 2, FIO: 'Курская Алина Викторовна', username: 'KyrskayAV', email: 'sdred@mail.ru' },
-  { position: 3, FIO: 'Сыч Виктор Максимович', username: 'SuchVM', email: 'etwtew@mail.ru' },
+  {
+    position: 1,
+    surname: 'Петр',
+    name: 'Семёныч',
+    patronymic: 'Петрович',
+    username: 'MashkarovPS',
+    email: 'srwerad@mail.ru',
+  },
+  {
+    position: 2,
+    surname: 'Курская',
+    name: 'Алина',
+    patronymic: 'Викторовна',
+    username: 'KyrskayAV',
+    email: 'sdred@mail.ru',
+  },
+  {
+    position: 3,
+    surname: 'Сыч',
+    name: 'Виктор',
+    patronymic: 'Максимович',
+    username: 'SuchVM',
+    email: 'etwtew@mail.ru',
+  },
 ];
 
 @Component({
@@ -128,7 +175,9 @@ export class PageCreateUsersComponent implements OnInit {
   [x: string]: any;
   displayedColumns: string[] = [
     'position',
-    'FIO',
+    'surname',
+    'name',
+    'patronymic',
     'email',
     'class',
     /* 'classletter',*/
@@ -139,7 +188,9 @@ export class PageCreateUsersComponent implements OnInit {
 
   displayedColumns_2: string[] = [
     'position',
-    'FIO',
+    'surname',
+    'name',
+    'patronymic',
     'email',
     'subject',
     'username',
@@ -147,7 +198,16 @@ export class PageCreateUsersComponent implements OnInit {
   ];
   /*dataSource_2 = Teachers;*/
   dataSource_2 = new MatTableDataSource<Teacher>(Teachers);
-  displayedColumns_3: string[] = ['position', 'FIO', 'email', 'username', 'options'];
+
+  displayedColumns_3: string[] = [
+    'position',
+    'surname',
+    'name',
+    'patronymic',
+    'email',
+    'username',
+    'options',
+  ];
   /*dataSource_3 = Administrators;*/
   dataSource_3 = new MatTableDataSource<Administrator>(Administrators);
 
@@ -189,7 +249,6 @@ export class PageCreateUsersComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
   changeTeacher(item) {
     const dialogRef = this.dialog.open(WindowCreateTeachersComponent, {
       data: { item },

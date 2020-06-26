@@ -7,25 +7,21 @@ import { AppComponent } from './app.component';
 import { TestsComponent } from './tests/tests.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { UsersComponent } from './users/users.component';
 import { ClassesComponent } from './classes/classes.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { TopNavigationComponent } from './shared/top-navigation/top-navigation.component';
+
 import { PageCreateUsersComponent } from './page-create-users/page-create-users.component';
 import { WindowCreateUsersComponent } from './window-create-users/window-create-users.component';
 import { WindowCreateTeachersComponent } from './window-create-teachers/window-create-teachers.component';
 import { WindowCreateAdministratorsComponent } from './window-create-administrators/window-create-administrators.component';
 import { WindowCreateClassesComponent } from './window-create-classes/window-create-classes.component';
 import { WindowCreateSubjectsComponent } from './window-create-subjects/window-create-subjects.component';
-
-
-
+import { TopNavigationComponent } from './shared/top-navigation/top-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestsComponent,
-    UsersComponent,
     ClassesComponent,
     LoginPageComponent,
     TopNavigationComponent,

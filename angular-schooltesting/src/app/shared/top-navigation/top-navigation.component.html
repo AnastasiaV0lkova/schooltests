@@ -1,9 +1,16 @@
 <div class="menu">
-    <ul>
-      <li><a class="active">Тесты</a></li>
-      <li><a href="">Конструктор тестов</a></li>
-      <li><a href="" routerLink="/create-users">Добавить пользователя</a></li>
-      <li><a href="" routerLink="/classes">Настройки</a></li>
-      <li><a href="">Выход</a></li>
-    </ul>
+  <ul>
+    <li>
+      <button class="tests" mat-button [matMenuTriggerFor]="menu">
+        Тестирование
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Создание тестов</button>
+        <button mat-menu-item>Просмотр тестов</button>
+      </mat-menu>
+    </li>
+    <li><a href="" routerLink="/create-users">Пользователи</a></li>
+    <li><a href="" routerLink="/classes">Настройки</a></li>
+    <li><a href="">Выход</a></li>
+  </ul>
 </div>

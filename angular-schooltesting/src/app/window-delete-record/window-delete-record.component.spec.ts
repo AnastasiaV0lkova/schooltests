@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsersComponent } from './users.component';
+import { WindowDeleteRecordComponent } from './window-delete-record.component';
 
-describe('UsersComponent', () => {
-  let component: UsersComponent;
-  let fixture: ComponentFixture<UsersComponent>;
+describe('WindowDeleteRecordComponent', () => {
+  let component: WindowDeleteRecordComponent;
+  let fixture: ComponentFixture<WindowDeleteRecordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersComponent ]
+      declarations: [ WindowDeleteRecordComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsersComponent);
+    fixture = TestBed.createComponent(WindowDeleteRecordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

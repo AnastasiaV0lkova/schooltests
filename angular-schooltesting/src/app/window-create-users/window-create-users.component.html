@@ -6,19 +6,48 @@
     (ngSubmit)="onSubmitStudents()"
   >
     <mat-form-field class="example-full-width">
-      <mat-label for="search-box">Ф.И.О.</mat-label>
-      <input formControlName="FIO" matInput type="text" id="FIO" />
+      <mat-label for="search-box">Фамилия</mat-label>
+      <input formControlName="surname" matInput type="text" id="surname" />
       <mat-hint
         *ngIf="
-          formStudents.get('FIO').invalid && formStudents.get('FIO').touched
+          formStudents.get('surname').invalid &&
+          formStudents.get('surname').touched
         "
-        >Поле Ф.И.О. не должно быть пустым</mat-hint
+        >Поле фамилия не должно быть пустым</mat-hint
       >
     </mat-form-field>
-
+    &nbsp;
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Имя</mat-label>
+      <input formControlName="name" matInput type="text" id="name" />
+      <mat-hint
+        *ngIf="
+          formStudents.get('name').invalid && formStudents.get('name').touched
+        "
+        >Поле имя не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
     <br />
     <br />
 
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Отчество</mat-label>
+      <input
+        formControlName="patronymic"
+        matInput
+        type="text"
+        id="patronymic"
+      />
+      <mat-hint
+        *ngIf="
+          formStudents.get('patronymic').invalid &&
+          formStudents.get('patronymic').touched
+        "
+        >Поле отчество не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
+    &nbsp;
+  
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input
@@ -44,20 +73,12 @@
     <mat-form-field appearance="fill">
       <mat-label for="search-box">Цифра класса</mat-label>
       <mat-select>
-        <mat-option *ngFor="let option of classnumbers"
-          >{{ option.classnumber }}
+        <mat-option *ngFor="let option of class" [value]="option.id"
+          >{{ option.class }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    &nbsp;
-    <mat-form-field appearance="fill">
-      <mat-label for="search-box">Буква класса</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of classletters" [value]="option.id">{{
-          option.classletter
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+   
     <br />
 
     <mat-form-field class="example-full-width">
@@ -71,8 +92,7 @@
         >Поле логин не должно быть пустым
       </mat-hint>
     </mat-form-field>
-    <br />
-    <br />
+    &nbsp;
     <mat-form-field class="example-full-width">
       <mat-label for="search-box">Пароль:</mat-label>
       <input
@@ -107,16 +127,6 @@
     </mat-form-field>
 
     <br />
-    <!-- <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      id="submitDetails"
-      name="submitDetails"
-      [disabled]="formStudents.invalid"
-    >
-      Войти
-    </button> -->
     <mat-dialog-actions align="end">
       <button
         mat-button

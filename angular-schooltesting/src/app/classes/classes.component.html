@@ -15,18 +15,16 @@
       </ng-container>
 
       <!-- classnumber Column -->
-      <ng-container matColumnDef="class">
-        <th mat-header-cell *matHeaderCellDef>Класс</th>
-        <td mat-cell *matCellDef="let element">{{ element.class }}</td>
+      <ng-container matColumnDef="classnumber">
+        <th mat-header-cell *matHeaderCellDef>Номер</th>
+        <td mat-cell *matCellDef="let element">{{ element.classnumber }}</td>
       </ng-container>
 
-      <!-- classletter Column
       <ng-container matColumnDef="classletter">
         <th mat-header-cell *matHeaderCellDef>класса</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.classletter }} 
-        </td>
-      </ng-container>  -->
+        <td mat-cell *matCellDef="let element">{{ element.classletter }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">

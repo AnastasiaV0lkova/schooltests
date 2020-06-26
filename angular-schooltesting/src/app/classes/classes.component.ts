@@ -4,11 +4,12 @@ import { WindowCreateSubjectsComponent } from '../window-create-subjects/window-
 import { WindowCreateClassesComponent } from '../window-create-classes/window-create-classes.component';
 import { SelectControlValueAccessor } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { WindowDeleteRecordComponent } from '../window-delete-record/window-delete-record.component';
 
 export interface Class {
   position: number;
-  class: string;
-  /* classletter: string;*/
+  classnumber: number;
+  classletter: string;
 }
 
 export interface Subject {
@@ -17,9 +18,9 @@ export interface Subject {
 }
 
 const Classes: Class[] = [
-  { position: 1, class: '10 А' /*classletter: 'А'*/ },
-  { position: 2, class: '7 Б' /*classletter: 'Б'*/ },
-  { position: 3, class: '6 Г' /*classletter: 'Г'*/ },
+  { position: 1, classnumber: 10, classletter: 'А' },
+  { position: 2, classnumber: 7, classletter: 'Б' },
+  { position: 3, classnumber: 6, classletter: 'Г' },
 ];
 
 const Subjects: Subject[] = [
@@ -38,8 +39,9 @@ export class ClassesComponent implements OnInit {
 
   displayedColumns_1: string[] = [
     'position',
-    'class',
-    /*'classletter',*/ 'options',
+    'classnumber',
+    'classletter',
+    'options',
   ];
   /*dataSource_1 = Classes;*/
   dataSource_1 = new MatTableDataSource<Class>(Classes);
@@ -53,7 +55,7 @@ export class ClassesComponent implements OnInit {
 
   openDialogClasses() {
     const dialogRef = this.dialog.open(WindowCreateClassesComponent);
-
+   /* this.dialogRef.title.visible = false;*/
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
@@ -69,9 +71,8 @@ export class ClassesComponent implements OnInit {
 
   changeClass(item) {
     const dialogRef = this.dialog.open(WindowCreateClassesComponent, {
-      data: { item },
-    });
-
+      data: { item }, });
+    
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
@@ -81,14 +82,15 @@ export class ClassesComponent implements OnInit {
     const dialogRef = this.dialog.open(WindowCreateSubjectsComponent, {
       data: { item },
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   removeClasses(element) {
-    this.dataSource_1.data.splice(Classes.indexOf(element), 1);
+     const dialogRef = this.dialog.open(WindowDeleteRecordComponent);
+    
+     this.dataSource_1.data.splice(Classes.indexOf(element), 1);
     this.dataSource_1 = new MatTableDataSource<Class>(this.dataSource_1.data);
   }
 

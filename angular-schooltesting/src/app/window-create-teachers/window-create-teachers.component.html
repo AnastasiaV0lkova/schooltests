@@ -1,53 +1,83 @@
 <mat-dialog-content class="mat-typography">
   <form
     [formGroup]="formTeachers"
-    action="/regisrstudent"
+    action="/regisrteacher"
     method="post"
-    (ngSubmit)="onSubmitStudents()"
+    (ngSubmit)="onSubmitTeachers()"
   >
     <mat-form-field class="example-full-width">
-      <mat-label for="search-box">Ф.И.О.</mat-label>
-      <input formControlName="FIO" matInput type="text" id="FIO" />
+      <mat-label for="search-box">Фамилия</mat-label>
+      <input formControlName="surname" matInput type="text" id="surname" />
       <mat-hint
         *ngIf="
-          formTeachers.get('FIO').invalid && formTeachers.get('FIO').touched
+          formTeachers.get('surname').invalid &&
+          formTeachers.get('surname').touched
         "
-        >Поле Ф.И.О. не должно быть пустым</mat-hint
+        >Поле фамилия не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Имя</mat-label>
+      <input formControlName="name" matInput type="text" id="name" />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('name').invalid && formTeachers.get('name').touched
+        "
+        >Поле имя не должно быть пустым</mat-hint
       >
     </mat-form-field>
     <br />
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label for="search-box">Отчество</mat-label>
+      <input
+        formControlName="patronymic"
+        matInput
+        type="text"
+        id="patronymic"
+      />
+      <mat-hint
+        *ngIf="
+          formTeachers.get('patronymic').invalid &&
+          formTeachers.get('patronymic').touched
+        "
+        >Поле отчество не должно быть пустым</mat-hint
+      >
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <mat-label>Предмет</mat-label>
+      <!--[formControl]="getSubjects" -->
+      <mat-select multiple>
+        <mat-option *ngFor="let topping of getSubjects" [value]="getSubjects">{{
+          getSubjects
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <br />
     <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input
-        matInput
-        [formControl]="emailFormControl"
-        [errorStateMatcher]="matcher"
-        placeholder="Ex. pat@example.com"
-      />
-      <mat-error
-        *ngIf="
-          emailFormControl.hasError('email') &&
-          !emailFormControl.hasError('required')
-        "
-      >
+      matInput
+      [formControl]="emailFormControl"
+      [errorStateMatcher]="matcher"
+      placeholder="Ex. pat@example.com"
+    />
+    <mat-error
+      *ngIf="
+        emailFormControl.hasError('email') &&
+        !emailFormControl.hasError('required')
+      "
+    >
       Введите правильную форму email
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Поле email не заполнено 
-      </mat-error>
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Поле email не заполнено
+    </mat-error>
     </mat-form-field>
-    <br/>
-    <br/>
-    <mat-form-field>
-      <mat-label>Предмет</mat-label>
-      <!--[formControl]="getSubjects" -->
-      <mat-select multiple > 
-        <mat-option *ngFor="let topping of getSubjects" [value]="getSubjects">{{getSubjects}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br /><br />
-
+    <br />
+    <br />
     <mat-form-field class="example-full-width">
       <mat-label for="search-box">Логин:</mat-label>
       <input formControlName="username" matInput type="text" id="username" />
@@ -59,8 +89,7 @@
         >Поле логин не должно быть пустым
       </mat-hint>
     </mat-form-field>
-    <br />
-    <br />
+    &nbsp;
     <mat-form-field class="example-full-width">
       <mat-label for="search-box">Пароль:</mat-label>
       <input

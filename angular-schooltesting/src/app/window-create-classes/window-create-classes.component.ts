@@ -14,8 +14,14 @@ export class WindowCreateClassesComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
+    
+    this.formClasses = new FormGroup({
+      classnumbers: new FormControl(null, [Validators.required]),
+    });
+
     if (this.data.item) {
-      this.formClasses.get('class').setValue(this.data.item.class);
+      this.formClasses.get('classnumbers').setValue(this.data.item.classnumbers);
+      this.formClasses.get('classletters').setValue(this.data.item.classletters);
     }
   }
   public classnumbers = [
